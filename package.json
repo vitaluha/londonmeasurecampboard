@@ -2,11 +2,13 @@
   "name": "londonmeasurecampboard",
   "version": "0.0.1",
   "dependencies": {
-    "express": "^3.1.2",
+    "body-parser": "^1.18.3",
+    "express": "*",
+    "method-override": "*",
     "toastr": "^2.1.4"
   },
   "engines": {
-    "node": "0.10.x",
+    "node": "8.11.1",
     "npm": "1.2.x"
   }
 }

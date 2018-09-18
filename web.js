@@ -1,10 +1,15 @@
-var express = require("express"),
-    http    = require('http'),
-    fs      = require('fs')
+var express    = require("express"),
+    http       = require('http'),
+    bodyParser = require('body-parser'),
+    fs         = require('fs');
 var app = express();
-app.use(express.logger());
+// app.use(express.logger());
 
 app.use(express.static(__dirname + '/webroot'));
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.get('/', function(request, response) {
   response.sendfile(__dirname + '/webroot/index.html');
