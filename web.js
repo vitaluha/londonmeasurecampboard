@@ -10,6 +10,7 @@ app.use(express.static(__dirname + '/webroot'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
   response.sendfile(__dirname + '/webroot/index.html');
