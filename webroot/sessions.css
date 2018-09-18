@@ -1,0 +1,231 @@
+html {
+  overflow-x: hidden;
+}
+/* .header {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  z-index: 2;
+} */
+.ui.card, .ui.cards>.card {
+  box-shadow: 0 1px 3px 0 #ECEDEE, 0 0 0 1px #ECEDEE;
+  border: 1px solid transparent;
+}
+.ui.card>.content>.header, .ui.cards>.card>.content>.header {
+  margin: 0;
+}
+.measure-camp-header {
+  text-align: center;
+  /*background: linear-gradient(to bottom, #373737 0%, #1b1b1b 100%);*/
+  background: #a43e41;
+}
+.measure-camp-header h3 {
+  color: lighten(#DFD7C4,5%);
+  margin: 0.3em 0 0em 0;
+}
+.measure-camp-header .captioncont span {
+  color: #B74548;
+  font-size: 1.2em;
+  line-height: 30px;
+  font-weight: bold;
+}
+.measure-camp-logo {
+  height: 75px;
+  display: inherit;
+  width: 100px;
+  margin: 0 auto;
+}
+.measure-camp-logo:hover {
+  opacity: 0.8;
+  background: #3b3b3b;
+}
+
+/* Main session list */
+.session-list {
+  padding: 20px 20px 135px;
+}
+.built-by {
+  margin: 10px calc(50% - 110px) 0px !important;
+  width: 220px;
+}
+.card-header {
+  font-weight: bold;
+  background: #ecedee;
+  padding: 5px;
+  margin-bottom: 2px;
+}
+.session-speaker a {
+  /* opacity: 1 !important; */
+}
+.session-rooms {
+  text-align: center;
+  padding-top: 5px;
+}
+.all.session-room {
+  background: #666;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.session-room, .session-time {
+  margin: 0 0.25em 0.2em 0 !important;
+}
+.session-room:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  color: #333 !important;
+}
+
+.session-times {
+  text-align: center;
+}
+
+.session-times.favs {
+  padding-bottom: 5px;
+}
+
+/*.session-times.favs .session-search {
+  width: calc(100% - 175px);
+}*/
+
+.session-time {
+  padding: 0.4em 0.4em !important;
+}
+.session-time:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.add-to-call {
+  text-align: right !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.add-to-call:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  color: #06c;
+}
+.sticky {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  background: #ecedee;
+  box-shadow: 0px 3px 10px 4px rgba(0,0,0,0.32);
+}
+.speaker-twitter {
+  margin-left: 6px !important;
+  border: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.speaker-twitter a {
+  opacity: 1 !important;
+  color: rgba(0,0,0,.87) !important;
+}
+.speaker-twitter a:hover {
+  /* opacity: 0.5 !important; */
+  color: #06c !important;
+}
+.speaker-twitter a i {
+  margin-right: 2px !important;
+}
+.session-tags .label{
+  border: none !important;
+  color: #aaa !important;
+  padding-right: 0;
+}
+.links-dropdown {
+  position: absolute !important;
+  top: 28px;
+  left: 20px;
+  color: white;
+  /* z-index: 2; */
+}
+.sponsors-dropdown {
+  position: absolute !important;
+  top: 28px;
+  left: 100px;
+  color: white;
+  /* z-index: 2; */
+}
+.tag-labels {
+  color: #aaa;
+}
+.no-border {
+  border: none !important;
+}
+.heart-right {
+  float: right;
+}
+.session-select {
+  /* border: 2px solid red !important; */
+  /*box-shadow: 0px 0px 6px 2px #a43e41 !important;*/
+  border: 1px solid #a43e41 !important;
+}
+
+.highlight {
+  background: yellow;
+}
+
+.full-width-card {
+  width: 100% !important;
+  box-shadow: 0px 0px 6px 2px #a43e41 !important;
+  /* border: 3px solid #a43e41 !important; */
+}
+.full-width-card .header {
+  text-align: center;
+  padding-bottom: 5px;
+}
+.full-width-card .card-header {
+  background: #a43e41;
+  color: white;
+  text-align: center !important;
+  padding: 10px;
+}
+.full-width-card .description {
+  text-align: center !important;
+  padding: 5px;
+}
+/*#a43e41*/
+.card.finished{
+  opacity: 0.6;
+}
+
+@media only screen and (max-width: 600px) {
+  .ui.stackable.cards>.card {
+    margin: 0.5em 1em !important;
+  }
+  /* .card-header {
+    padding: 2px;
+    line-height: 14px;
+  } */
+  .content, .extra-content {
+    padding: 0.5em !important;
+  }
+  .session-list {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .session-times .icon {
+    margin: 0 !important;
+  }
+  .session-times .session-favs, .session-times .session-time-filter,
+  .session-times .hide-past {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .mc-label-value {
+    display: none;
+  }
+  .links-dropdown {
+    left: 10px;
+  }
+  .sponsors-dropdown {
+    left: auto;
+    right: 10px;
+  }
+  .session-search {
+    width: calc(100% - 200px);
+  }
+}

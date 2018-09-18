@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <title>MeasureCamp Sessions</title>
+  <link rel="stylesheet" type="text/css" href="libs/semantic/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="sessions.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Board Options -->
+  <script src="board-config.js"></script>
+  <script src="libs/jquery-3.1.1.min.js" ></script>
+  <script src="libs/semantic/semantic.min.js"></script>
+  <script src="loadSessions.js"></script>
+  <!--https://github.com/nwcell/ics.js-->
+  <script src="scripts/ics.deps.min.js"></script>
+  <script src="scripts/ics.js"></script>
+  <link href="scripts/toastr.css" rel="stylesheet"/>
+  <script src="scripts/toastr.min.js"></script>
+  <script src="scripts/moment.js"></script>
+</head>
+
+<body>
+  <div class="header" w3-include-html="sessions-header.html">
+  </div>
+  <div id="linksDropdown" class="links-dropdown" ></div>
+  <div id="sponsorsDropdown" class="sponsors-dropdown" ></div>
+  
+  <div id='demo' class='session-list'></div>
+  <div id="filterHeader" class="sticky">
+    <div id='rooms' class='session-rooms'></div>
+    <div id='times' class='session-times times'></div>
+    <div id='favs' class='session-times favs'></div>
+  </div>
+
+  <script src='scripts/tabletop.min.js'></script>
+  <script src='includeHTML.js'></script>
+
+  <script src='loadApp.js'></script>
+  <script src='loadCards.js'></script>
+  <script src='loadToastr.js'></script>
+  <script src='loadFilters.js'></script>
+  <script src='numToWords.js'></script>
+
+  <script>
+    includeHTML();
+  </script>
+</body>
+</html>
