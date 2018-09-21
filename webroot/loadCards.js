@@ -47,7 +47,8 @@ function loadCards(data, roomCount) {
     }
     session['session-select'] = cardSaved;
     /*<img class="ui fluid image" src="${image}"/>*/
-    if (description === '&#160;' && room_color !== 'custom') {
+    if (speaker === '<i title="Anonymous Coward" class="user secret icon"></i>' && title === '&#160;' &&
+      description === '&#160;' && room_color !== 'custom') {
       // divs += buildSingleEmptyCard(this);
       divs += `
         <div class="card ${isFinished} ${sessionSelect}" data-id="${dataId}">

@@ -176,7 +176,7 @@ function addToCall(data, heart) {
 }
 
 // TODO: improve event description card
-function buildEventDescription(data) {
+/*function buildEventDescription(data) {
   var title = data.title ? data.title : ' ';
   var description = data.description ? data.description : ' ';
   var speaker = data.speaker ? data.speaker : ' ';
@@ -188,7 +188,7 @@ function buildEventDescription(data) {
     Room: ${room_color}\\n
   `
   return desc;
-}
+}*/
 
 function search_sessions() {
   $('#search_sessions').keyup(function(d) {
