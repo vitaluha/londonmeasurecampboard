@@ -106,15 +106,17 @@ function buildSessionFavs() {
 
   // ui red basic bottom left pointing dropdown button
 
+  /* BELOW - for 'Hide Past Sessions' button
+    <button class="ui red basic button hide-past" onclick="showHideCurrentSessions()">
+      <i title="Hide Past Sessions" class="hourglass icon"></i>
+      <span class="mc-label-value past-sessions">Hide Past Sessions</span>
+    </button> 
+  */
+
   var divs = `
     <button class="ui red basic button session-favs" onclick="filterBySessionFav(this)">
       <i title="Show My Sessions" class="heart icon"></i>
       <span class="mc-label-value">My Sessions</span>
-    </button>
-
-    <button class="ui red basic button hide-past" onclick="showHideCurrentSessions()">
-      <i title="Hide Past Sessions" class="hourglass icon"></i>
-      <span class="mc-label-value past-sessions">Hide Past Sessions</span>
     </button>
 
     <div class="ui red basic bottom left pointing dropdown button session-time-filter">

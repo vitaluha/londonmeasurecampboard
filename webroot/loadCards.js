@@ -18,7 +18,7 @@ function loadCards(data, roomCount) {
       description = session.description ? session.description : '&#160;',
       twitter = session.twitter ?
         '<a title="' + session.twitter + '" target="_blank" href="https://www.twitter.com/' +
-          session.twitter + '"><i class="twitter icon"></i>' + session.speaker + '</a>' :
+        session.twitter + '"><i class="twitter icon"></i>' + session.speaker + '</a>' :
         undefined,
       speaker = twitter ?
         twitter :
@@ -32,7 +32,9 @@ function loadCards(data, roomCount) {
         '<i title="Audio/Video" class="large file audio outline icon"></i>' :
         '<i title="Whiteboard only" class="large clipboard outline icon"></i>',
       capacity = session.capacity ? session.capacity : 'N/A',
-      isFinished = getIsFinished(session.time) ? "finished" : "";
+      isFinished = "";
+      // TODO: remove line above, add add line below to add back 'isFinished' status to sessions
+      // isFinished =  getIsFinished(session.time) ? "finished" : "";
 
     var jsonSession = JSON.stringify(session).toString();
     var dataId = session['data-id'];

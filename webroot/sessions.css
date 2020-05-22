@@ -17,6 +17,7 @@ html {
 .measure-camp-header {
   text-align: center;
   /*background: linear-gradient(to bottom, #373737 0%, #1b1b1b 100%);*/
+  display: flex;
   background: #a43e41;
 }
 .measure-camp-header h3 {
@@ -30,6 +31,8 @@ html {
   font-weight: bold;
 }
 .measure-camp-logo {
+  position: absolute;
+  left: calc(50% - 50px);
   height: 75px;
   display: inherit;
   width: 100px;
@@ -42,7 +45,7 @@ html {
 
 /* Main session list */
 .session-list {
-  padding: 20px 20px 135px;
+  padding: 20px 10px 135px;
 }
 .built-by {
   margin: 10px calc(50% - 110px) 0px !important;
@@ -136,18 +139,14 @@ html {
   padding-right: 0;
 }
 .links-dropdown {
-  position: absolute !important;
-  top: 28px;
-  left: 20px;
+  padding-left: 20px;
+  line-height: 75px;
   color: white;
-  /* z-index: 2; */
 }
 .sponsors-dropdown {
-  position: absolute !important;
-  top: 28px;
-  left: 100px;
+  padding-left: 20px;
+  line-height: 75px;
   color: white;
-  /* z-index: 2; */
 }
 .tag-labels {
   color: #aaa;
