@@ -16,6 +16,7 @@ html {
 }
 .measure-camp-header {
   text-align: center;
+  justify-content: center;
   /*background: linear-gradient(to bottom, #373737 0%, #1b1b1b 100%);*/
   display: flex;
   background: #a43e41;
@@ -31,12 +32,12 @@ html {
   font-weight: bold;
 }
 .measure-camp-logo {
-  position: absolute;
-  left: calc(50% - 50px);
+  /* position: absolute;
+  left: calc(50% - 50px); */
   height: 75px;
   display: inherit;
   width: 100px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 .measure-camp-logo:hover {
   opacity: 0.8;
@@ -186,6 +187,18 @@ html {
   text-align: center !important;
   padding: 5px;
 }
+.full-width-card .extra.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.full-width-card .talk-link {
+  /* display: inline; */
+  margin: 0;
+}
+.description {
+  white-space: pre-line;
+}
 /*#a43e41*/
 .card.finished{
   opacity: 0.6;
@@ -203,7 +216,7 @@ html {
     padding: 2px;
     line-height: 14px;
   } */
-  .content, .extra-content {
+  .content, .extra.content {
     padding: 0.5em !important;
   }
   .session-list {
@@ -231,4 +244,15 @@ html {
   .session-search {
     width: calc(100% - 200px);
   }
+}
+/* End mobile screen media query */
+
+.talk-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.hidden {
+  display: none !important;
 }

@@ -26,6 +26,8 @@ function loadCards(data, roomCount) {
       tags = session.tags ? session.tags : 'N/A',
       image = session.image ? session.image : '',
       focus = session.focus ? session.focus : '&#160;',
+      talk_link = session.talk_link ? session.talk_link  : undefined,
+      talk_link_style = session.talk_link ? 'visible' : 'hidden',
       level = session.level ? session.level : '&#160;',
       type = session.type ? session.type : '&#160;',
       av = session.av === 'AV' ?
@@ -104,6 +106,11 @@ function loadCards(data, roomCount) {
               ${capacity}
               <i class="icon users"></i>
             </span>
+            <div class="talk-link ${talk_link_style}">
+              <button class="ui ${room_color} button" onclick = "window.open('${talk_link}',  '_blank')" data-toggle="tooltip" title="${talk_link}">
+                <i class="external url icon"></i>Enter Room
+              </button>
+            </div>
           </div>
         </div>
       `;
@@ -127,10 +134,16 @@ function loadCards(data, roomCount) {
             <span class="ui basic tiny label">${focus}</span>
             <span class="ui basic tiny label">${type}</span>
 
+            <div class="talk-link ${talk_link_style}">
+              <button class="ui ${room_color} button" onclick = "window.open('${talk_link}',  '_blank')" data-toggle="tooltip" title="${talk_link}">
+                <i class="external url icon"></i>Enter Room
+              </button>
+            </div>
+
             <div class="description">
               ${description}
             </div>
-
+            
           </div>
           <div class="extra content">
             <span class="ui ${room_color} basic  circular label">
