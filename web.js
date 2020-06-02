@@ -1,5 +1,6 @@
 var express    = require("express"),
-    http       = require('http'),
+  http = require('http'),
+  url = require("url"),
     bodyParser = require('body-parser');
     // fs         = require('fs');
 var app = express();
@@ -14,6 +15,14 @@ app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
   response.sendfile(__dirname + '/webroot/index.html');
+});
+
+app.get('/2020', function (request, response) {
+  var queryData = url.parse(request.url, true);
+  console.log(queryData.query.city);
+  app.set('_city', queryData.query.city)
+  response.sendfile(__dirname + '/webroot/index.html');
+  // response.render(__dirname + '/webroot/index.html', { city: queryData.query.city});
 });
 
 /***********

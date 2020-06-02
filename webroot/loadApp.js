@@ -10,13 +10,29 @@ function init() {
     callback: showInfo,
     simpleSheet: true
   });
-
 }
+
+function getCity() {
+  const urlParams = new URLSearchParams(window.location.search)
+  var city = 'Data';
+  if (urlParams && urlParams.get('city')) {
+    city = urlParams.get('city');
+  }
+  return city;
+}
+
 function showInfo(data, tabletop) {
   if (data === undefined) {
     return;
   }
-  var cards = tabletop.sheets('Data').elements;
+  var city = getCity();
+  var cards; 
+  if (!tabletop.sheets(city)) {
+    alert('No such city: ' + city);
+    // TODO: add error friendly UX here
+    return;
+  }
+  cards = tabletop.sheets(city).elements;
 
   // TODO: remove this, and read from `session_id` property directly
   cards.forEach(function(d, i) {
@@ -37,7 +53,7 @@ function showInfo(data, tabletop) {
   buildSessionFavs();
   search_sessions();
 
-  var settings = tabletop.sheets('Settings').elements;
+  var settings = tabletop.sheets(city + ' Settings').elements;
   loadLinks(settings);
   loadSponsors(settings);
   loadLogo(settings);
