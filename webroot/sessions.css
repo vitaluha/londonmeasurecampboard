@@ -256,3 +256,10 @@ html {
 .hidden {
   display: none !important;
 }
+
+.white-menu {
+  color: white !important;
+}
+.white-menu:hover {
+  color: #ccc !important;
+}

@@ -222,21 +222,21 @@ function showHideCurrentSessions() {
 function loadLinks(links) {
   var div = '';
   div += `
-  <div class="ui simple dropdown">
-    <div class="text">Links</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-  `;
-    for (var link in links) {
-      var item = links[link];
-      if (item.name === 'Menu Item') {
-        div += `
-          <a class="item" target="_blank" title="${item.value}" href="${item.href}">
-            ${item.value}
-          </a>
-        `;
-      }
-    }
+  <div class="ui text menu">
+    <div class="ui white-menu dropdown item">
+      Links
+      <i class="dropdown icon"></i>
+      <div class="menu">` ;
+        for (var link in links) {
+          var item = links[link];
+          if (item.name === 'Menu Item') {
+            div += `
+            <a class="white item" target="_blank" title="${item.value}" href="${item.href}">
+              ${item.value}
+            </a>
+          `;
+          }
+        }
   div += `</div></div>`;
   document.getElementById("linksDropdown").innerHTML = div;
 }
@@ -244,16 +244,16 @@ function loadLinks(links) {
 function loadSponsors(links) {
   var div = '';
   div += `
-  <div class="ui simple dropdown">
-    <div class="text">Sponsors</div>
-    <i class="dropdown icon"></i>
-    <div class="left menu">
-  `;
+  <div class="ui text menu">
+    <div class="ui white-menu dropdown item">
+      Sponsors
+      <i class="dropdown icon"></i>
+      <div class="menu">` ;
     for (var link in links) {
       var item = links[link];
       if (item.name === 'Sponsor') {
         div += `
-          <a class="item" target="_blank" title="${item.value}" href="${item.href}">
+          <a class="white item" target="_blank" title="${item.value}" href="${item.href}">
             ${item.value}
           </a>
         `;
