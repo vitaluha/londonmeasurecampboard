@@ -23,17 +23,18 @@ function loadCards(data, roomCount) {
       speaker = twitter ?
         twitter :
         session.speaker ? session.speaker : '<i title="Anonymous Coward" class="user secret icon"></i>',
-      tags = session.tags ? session.tags : 'N/A',
+      tags = session.tags ? session.tags : '&nbsp;',
       image = session.image ? session.image : '',
       focus = session.focus ? session.focus : '&#160;',
       talk_link = session.talk_link ? session.talk_link : undefined,
+      link_text = session.link_text ? session.link_text : 'Enter Room',
       talk_link_style = session.talk_link ? 'visible' : 'hidden',
       level = session.level ? session.level : '&#160;',
       type = session.type ? session.type : '&#160;',
       av = session.av === 'AV' ?
         '<i title="Audio/Video" class="large file audio outline icon"></i>' :
         '<i title="Whiteboard only" class="large clipboard outline icon"></i>',
-      capacity = session.capacity ? session.capacity : 'N/A',
+      capacity = session.capacity ? session.capacity : '&nbsp;',
       isFinished = "";
     // TODO: remove line above, add add line below to add back 'isFinished' status to sessions
     // isFinished =  getIsFinished(session.time) ? "finished" : "";
@@ -108,7 +109,7 @@ function loadCards(data, roomCount) {
             </span>
             <div class="talk-link ${talk_link_style}">
               <button class="ui ${room_color} button" onclick = "window.open('${talk_link}',  '_blank')" data-toggle="tooltip" title="${talk_link}">
-                <i class="external url icon"></i>Enter Room
+                <i class="external url icon"></i>${link_text}
               </button>
             </div>
           </div>
@@ -119,7 +120,7 @@ function loadCards(data, roomCount) {
         <div class="card ${isFinished} ${dataId} ${sessionSelect}" data-id="${dataId}">
           <div class="content">
             <h5 class="ui ${room_color} header">
-              <span class="session-time-header">${time}</span>
+              <div class="session-time-header">${time}</div>
               <div class="ui basic label speaker-twitter">
                 ${speaker}
               </div>
@@ -130,13 +131,13 @@ function loadCards(data, roomCount) {
             <div class="left aligned card-header">
               ${title}
             </div>
-            <span class="ui basic tiny label">${level}</span>
-            <span class="ui basic tiny label">${focus}</span>
-            <span class="ui basic tiny label">${type}</span>
+            <div class="ui basic tiny label session-label">Level: <strong>${level}</strong></div>
+            <div class="ui basic tiny label session-label">Focus: <strong>${focus}</strong></div>
+            <div class="ui basic tiny label session-label">Type:  <strong>${type}</strong></div>
 
             <div class="talk-link ${talk_link_style}">
               <button class="ui ${room_color} button" onclick = "window.open('${talk_link}',  '_blank')" data-toggle="tooltip" title="${talk_link}">
-                <i class="external url icon"></i>Enter Room
+                <i class="external url icon"></i>${link_text}
               </button>
             </div>
 

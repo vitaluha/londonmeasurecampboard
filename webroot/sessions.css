@@ -7,11 +7,13 @@ html {
   top: 0px;
   z-index: 2;
 } */
-.ui.card, .ui.cards>.card {
-  box-shadow: 0 1px 3px 0 #ECEDEE, 0 0 0 1px #ECEDEE;
+.ui.card,
+.ui.cards > .card {
+  box-shadow: 0 1px 3px 0 #ecedee, 0 0 0 1px #ecedee;
   border: 1px solid transparent;
 }
-.ui.card>.content>.header, .ui.cards>.card>.content>.header {
+.ui.card > .content > .header,
+.ui.cards > .card > .content > .header {
   margin: 0;
 }
 .measure-camp-header {
@@ -22,11 +24,11 @@ html {
   background: #a43e41;
 }
 .measure-camp-header h3 {
-  color: lighten(#DFD7C4,5%);
+  color: lighten(#dfd7c4, 5%);
   margin: 0.3em 0 0em 0;
 }
 .measure-camp-header .captioncont span {
-  color: #B74548;
+  color: #b74548;
   font-size: 1.2em;
   line-height: 30px;
   font-weight: bold;
@@ -53,10 +55,12 @@ html {
   width: 220px;
 }
 .card-header {
+  font-size: 1rem;
   font-weight: bold;
   background: #ecedee;
   padding: 5px;
   margin-bottom: 2px;
+  min-height: 48px;
 }
 .session-speaker a {
   /* opacity: 1 !important; */
@@ -71,7 +75,8 @@ html {
   padding-left: 15px;
   padding-right: 15px;
 }
-.session-room, .session-time {
+.session-room,
+.session-time {
   margin: 0 0.25em 0.2em 0 !important;
 }
 .session-room:hover {
@@ -115,7 +120,7 @@ html {
   width: 100%;
   z-index: 2;
   background: #ecedee;
-  box-shadow: 0px 3px 10px 4px rgba(0,0,0,0.32);
+  box-shadow: 0px 3px 10px 4px rgba(0, 0, 0, 0.32);
 }
 .speaker-twitter {
   margin-left: 6px !important;
@@ -125,7 +130,7 @@ html {
 }
 .speaker-twitter a {
   opacity: 1 !important;
-  color: rgba(0,0,0,.87) !important;
+  color: rgba(0, 0, 0, 0.87) !important;
 }
 .speaker-twitter a:hover {
   /* opacity: 0.5 !important; */
@@ -134,7 +139,7 @@ html {
 .speaker-twitter a i {
   margin-right: 2px !important;
 }
-.session-tags .label{
+.session-tags .label {
   border: none !important;
   color: #aaa !important;
   padding-right: 0;
@@ -178,12 +183,15 @@ html {
   padding-bottom: 5px;
 }
 .full-width-card .card-header {
+  font-size: 1.2rem;
   background: #a43e41;
   color: white;
   text-align: center !important;
   padding: 10px;
+  min-height: inherit;
 }
 .full-width-card .description {
+  font-size: 1rem;
   text-align: center !important;
   padding: 5px;
 }
@@ -200,8 +208,12 @@ html {
   white-space: pre-line;
 }
 /*#a43e41*/
-.card.finished{
+.card.finished {
   opacity: 0.6;
+}
+.session-label {
+  display: block !important;
+  width: fit-content;
 }
 
 #measureCampLogo {
@@ -209,14 +221,15 @@ html {
 }
 
 @media only screen and (max-width: 600px) {
-  .ui.stackable.cards>.card {
+  .ui.stackable.cards > .card {
     margin: 0.5em 1em !important;
   }
   /* .card-header {
     padding: 2px;
     line-height: 14px;
   } */
-  .content, .extra.content {
+  .content,
+  .extra.content {
     padding: 0.5em !important;
   }
   .session-list {
@@ -226,7 +239,8 @@ html {
   .session-times .icon {
     margin: 0 !important;
   }
-  .session-times .session-favs, .session-times .session-time-filter,
+  .session-times .session-favs,
+  .session-times .session-time-filter,
   .session-times .hide-past {
     padding-left: 10px;
     padding-right: 10px;
