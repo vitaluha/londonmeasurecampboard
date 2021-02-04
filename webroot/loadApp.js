@@ -4,11 +4,13 @@
 var publicSpreadsheetUrl = gOptions.enabled ? gOptions.google_sheet_url : '';
 
 var sessions = {};
+window.addEventListener('DOMContentLoaded', init);
 function init() {
-  showInfo();
-  Tabletop.init( { key: publicSpreadsheetUrl,
+  Tabletop.init({
+    key: publicSpreadsheetUrl,
     callback: showInfo,
-    simpleSheet: true
+    simpleSheet: true,
+    parameterize: 'http://example.herokuapp.com/?url='
   });
 }
 
@@ -26,7 +28,7 @@ function showInfo(data, tabletop) {
     return;
   }
   var city = getCity();
-  var cards; 
+  var cards;
   if (!tabletop.sheets(city)) {
     alert('No such city: ' + city);
     // TODO: add error friendly UX here
@@ -35,7 +37,7 @@ function showInfo(data, tabletop) {
   cards = tabletop.sheets(city).elements;
 
   // TODO: remove this, and read from `session_id` property directly
-  cards.forEach(function(d, i) {
+  cards.forEach(function (d, i) {
     // Index every data row
     d['data-id'] = d['session_id'];
   });
@@ -57,12 +59,13 @@ function showInfo(data, tabletop) {
   loadLinks(settings);
   loadSponsors(settings);
   loadLogo(settings);
+  loadToastrNotif(settings);
 }
 function buildTags(tags) {
   var arr = tags.split(',');
   var html = '';
   for (x in arr) {
-    html += '<span class="ui mini basic label">' +  arr[x] + '</span>';
+    html += '<span class="ui mini basic label">' + arr[x] + '</span>';
   }
   return html;
 }
@@ -73,7 +76,7 @@ function buildRooms(roomCount) {
 
   for (var x in colors) {
     var color = colors[x].color,
-    sponsor = colors[x].sponsor;
+      sponsor = colors[x].sponsor;
     divs += `
       <div data-id="${color}" class="ui ${color} label session-room" onclick="filterByRoomColor('${color}')">
         ${sponsor}
@@ -84,6 +87,3 @@ function buildRooms(roomCount) {
   divs += '</div>';
   document.getElementById("rooms").innerHTML = divs;
 }
-
-window.addEventListener('DOMContentLoaded', init);
-// loadToastrNotif();

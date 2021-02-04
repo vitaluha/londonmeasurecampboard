@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    charset="utf-8"
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
   <title>Columbus Measure Camp Job Board</title>
-  <link rel="stylesheet" type="text/css" href="libs/semantic/semantic.min.css">
-  <link rel="stylesheet" type="text/css" href="jobs.css">
-  <script src="libs/jquery-3.1.1.min.js" ></script>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="libs/semantic/semantic.min.css"
+  >
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="jobs.css"
+  >
+  <script src="libs/jquery-3.1.1.min.js"></script>
   <script src="libs/semantic/semantic.min.js"></script>
 </head>
+
 <body>
   <div id='demo'></div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
   <script type='text/javascript'>
-  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1DvKN7wFeIhr9gDjQujC6F8TRKMi89EF9WU-x5N2d-28/edit?usp=sharing';
-  var jobs = {};
-  function init() {
-    Tabletop.init( { key: publicSpreadsheetUrl,
-      callback: showInfo,
-      simpleSheet: true
-    });
-  }
-  function showInfo(data, tabletop) {
-    jobs  = data;
-    onLoad();
-  }
+    var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1DvKN7wFeIhr9gDjQujC6F8TRKMi89EF9WU-x5N2d-28/edit?usp=sharing';
+    var jobs = {};
+    function init() {
+      Tabletop.init({
+        key: publicSpreadsheetUrl,
+        callback: showInfo,
+        simpleSheet: true
+      });
+    }
+    function showInfo(data, tabletop) {
+      jobs = data;
+      onLoad();
+    }
 
-  function onLoad() {
-    var data = jobs;
-    // divs = `<div class="ui three column grid">`;
-    divs = `<div class="ui equal width stackable relaxed container grid">`;
+    function onLoad() {
+      var data = jobs;
+      // divs = `<div class="ui three column grid">`;
+      divs = `<div class="ui equal width stackable relaxed container grid">`;
 
-    // <div class="image">
-    //   <img src="${data[x].LOGO}" />
-    // </div>
+      // <div class="image">
+      //   <img src="${data[x].LOGO}" />
+      // </div>
 
-    for (x in data) {
-      console.log(data[x])
-      divs += `
+      for (x in data) {
+        console.log(data[x])
+        divs += `
       <div class="column">
         <div class="ui fluid card">
           <div class="content">
@@ -60,14 +75,15 @@
         </div>
       </div>
       `;
+      }
+
+      divs += `</div>`;
+      document.getElementById("demo").innerHTML = divs;
     }
 
-    divs += `</div>`;
-    document.getElementById("demo").innerHTML = divs;
-  }
-
-  window.addEventListener('DOMContentLoaded', init)
+    window.addEventListener('DOMContentLoaded', init)
   </script>
 
 </body>
+
 </html>

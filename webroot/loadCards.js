@@ -26,7 +26,7 @@ function loadCards(data, roomCount) {
       tags = session.tags ? session.tags : 'N/A',
       image = session.image ? session.image : '',
       focus = session.focus ? session.focus : '&#160;',
-      talk_link = session.talk_link ? session.talk_link  : undefined,
+      talk_link = session.talk_link ? session.talk_link : undefined,
       talk_link_style = session.talk_link ? 'visible' : 'hidden',
       level = session.level ? session.level : '&#160;',
       type = session.type ? session.type : '&#160;',
@@ -35,8 +35,8 @@ function loadCards(data, roomCount) {
         '<i title="Whiteboard only" class="large clipboard outline icon"></i>',
       capacity = session.capacity ? session.capacity : 'N/A',
       isFinished = "";
-      // TODO: remove line above, add add line below to add back 'isFinished' status to sessions
-      // isFinished =  getIsFinished(session.time) ? "finished" : "";
+    // TODO: remove line above, add add line below to add back 'isFinished' status to sessions
+    // isFinished =  getIsFinished(session.time) ? "finished" : "";
 
     var jsonSession = JSON.stringify(session).toString();
     var dataId = session['data-id'];
@@ -177,7 +177,7 @@ function loadCards(data, roomCount) {
   // showHideCurrentSessions();
 
   // trigger dropdown loading
-  setTimeout(function() {
+  setTimeout(function () {
     $('.ui.dropdown').dropdown();
     setPastSessionsStatus();
   }, 500)
@@ -196,7 +196,7 @@ function setPastSessionsStatus() {
 function scrollToCurrentSession() {
   // $('.card').not('.finished').first()
   $('html, body').animate({
-      scrollTop: $('.card').not('.finished').first().offset().top - 5
+    scrollTop: $('.card').not('.finished').first().offset().top - 5
   }, 650);
 }
 
@@ -227,16 +227,16 @@ function loadLinks(links) {
       Links
       <i class="dropdown icon"></i>
       <div class="menu">` ;
-        for (var link in links) {
-          var item = links[link];
-          if (item.name === 'Menu Item') {
-            div += `
+  for (var link in links) {
+    var item = links[link];
+    if (item.name === 'Menu Item') {
+      div += `
             <a class="white item" target="_blank" title="${item.value}" href="${item.href}">
               ${item.value}
             </a>
           `;
-          }
-        }
+    }
+  }
   div += `</div></div>`;
   document.getElementById("linksDropdown").innerHTML = div;
 }
@@ -249,16 +249,16 @@ function loadSponsors(links) {
       Sponsors
       <i class="dropdown icon"></i>
       <div class="menu">` ;
-    for (var link in links) {
-      var item = links[link];
-      if (item.name === 'Sponsor') {
-        div += `
+  for (var link in links) {
+    var item = links[link];
+    if (item.name === 'Sponsor') {
+      div += `
           <a class="white item" target="_blank" title="${item.value}" href="${item.href}">
             ${item.value}
           </a>
         `;
-      }
     }
+  }
   div += `</div></div>`;
   document.getElementById("sponsorsDropdown").innerHTML = div;
 }
