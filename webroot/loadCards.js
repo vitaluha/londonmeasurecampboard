@@ -11,155 +11,33 @@ function loadCards(data, roomCount) {
     if (session.room_color === '') {
       continue;
     }
-    var room_color = session.room_color ? session.room_color : '', // '&#160;',
-      room_sponsor = session.room_sponsor ? session.room_sponsor : '&#160;',
-      time = session.time ? session.time.replace(/am/ig, '').replace(/pm/ig, '').trim() : '&#160;',
-      title = session.title ? session.title : '&#160;',
-      description = session.description ? session.description : '&#160;',
-      twitter = session.twitter ?
-        '<a title="' + session.twitter + '" target="_blank" href="https://www.twitter.com/' +
-        session.twitter + '"><i class="twitter icon"></i>' + session.speaker + '</a>' :
-        undefined,
-      speaker = twitter ?
-        twitter :
-        session.speaker ? session.speaker : '<i title="Anonymous Coward" class="user secret icon"></i>',
-      tags = session.tags ? session.tags : '&nbsp;',
-      image = session.image ? session.image : '',
-      focus = session.focus ? session.focus : '&#160;',
-      talk_link = session.talk_link ? session.talk_link : undefined,
-      link_text = session.link_text ? session.link_text : 'Enter Room',
-      talk_link_style = session.talk_link ? 'visible' : 'hidden',
-      level = session.level ? session.level : '&#160;',
-      type = session.type ? session.type : '&#160;',
-      av = session.av === 'AV' ?
-        '<i title="Audio/Video" class="large file audio outline icon"></i>' :
-        '<i title="Whiteboard only" class="large clipboard outline icon"></i>',
-      capacity = session.capacity ? session.capacity : '&nbsp;',
-      isFinished = "";
-    // TODO: remove line above, add add line below to add back 'isFinished' status to sessions
-    // isFinished =  getIsFinished(session.time) ? "finished" : "";
 
-    var jsonSession = JSON.stringify(session).toString();
+    var sessionObj = getSession(session);
     var dataId = session['data-id'];
-    var tagsHtml = buildTags(tags);
+
     // TODO: refactor into more modular/readable code
-    var sessionSelect = '';
-    var outline = 'outline';
     var cardSaved = localStorage.getItem('card' + dataId);
     if (cardSaved === 'true' || cardSaved === true) {
-      sessionSelect = 'session-select';
-      outline = '';
+      // add 'session-select' class to show 
+      sessionObj.sessionSelect = 'session-select';
+      sessionObj.outline = '';
+
     }
     session['session-select'] = cardSaved;
-    /*<img class="ui fluid image" src="${image}"/>*/
-    if (speaker === '<i title="Anonymous Coward" class="user secret icon"></i>' && title === '&#160;' &&
-      description === '&#160;' && room_color !== 'custom') {
-      // divs += buildSingleEmptyCard(this);
-      divs += `
-        <div class="card ${isFinished} ${sessionSelect}" data-id="${dataId}">
-          <div class="content">
-            <h5 class="ui ${room_color} header">
-              <span class="session-time-header">${time}</span>
-              <span class="heart-right">
-                <i title="Add to Calendar" class="${room_color} heart ${outline} icon add-to-call" onclick="addToCall('${dataId}', this)"></i>
-              </span>
-            </h5>
-            <h4 style="text-align: center;">No Session</h4>
-          </div>
-          <div class="extra content">
-            <span class="ui ${room_color} basic circular label">
-              ${room_sponsor}
-            </span>
-            <span class="ui mini labels session-tags">
-              ${tagsHtml}
-            </span>
-            <span title="Room Capacity: ${capacity}" class="ui circular basic  label no-border">
-              ${capacity}
-              <i class="icon users"></i>
-            </span>
-          </div>
-        </div>
-      `;
-    } else if (room_color === 'custom') { // if `room_color` == custom - this is custom card (for example happy hour, lunch, etc)
-      // this card is full width
-      // divs += buildCustomCard();
-      divs += `
-        <div class="card ${isFinished} ${dataId} ${sessionSelect} full-width-card" data-id="${dataId}">
-          <div class="content">
-            <h5 class="ui ${room_color} header">
-              <span class="session-time-header">${time}</span>
-            </h5>
-            <div class="left aligned card-header">
-              ${title}
-            </div>
-            <div class="description">
-              ${description}
-            </div>
-          </div>
-          <div class="extra content">
-            <span class="ui ${room_color} basic  circular label">
-              ${room_sponsor}
-            </span>
-            <span class="ui mini labels session-tags">
-              ${tagsHtml}
-            </span>
-            <span title="Room Capacity: ${capacity}" class="ui circular basic  label no-border">
-              ${capacity}
-              <i class="icon users"></i>
-            </span>
-            <div class="talk-link ${talk_link_style}">
-              <button class="ui ${room_color} button" onclick = "window.open('${talk_link}',  '_blank')" data-toggle="tooltip" title="${talk_link}">
-                <i class="external url icon"></i>${link_text}
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
+    if (sessionObj.speaker === '<i title="Anonymous Coward" class="user secret icon"></i>' &&
+      sessionObj.title === '&#160;' &&
+      sessionObj.description === '&#160;' &&
+      sessionObj.room_color !== 'custom') {
+      // THIS CARD IS EMPTY CARD
+      divs += buildEmptyCardHtml(sessionObj);
+    } else if (sessionObj.room_color === 'custom') {
+      // if `room_color` == custom - this is custom card (for example happy hour, lunch, etc)
+      // THIS CARD IS FULL WIDTH
+      divs += buildFullWidthCardHtml(sessionObj);
     } else {
-      divs += `
-        <div class="card ${isFinished} ${dataId} ${sessionSelect}" data-id="${dataId}">
-          <div class="content">
-            <h5 class="ui ${room_color} header">
-              <div class="session-time-header">${time}</div>
-              <div class="ui basic label speaker-twitter">
-                ${speaker}
-              </div>
-              <span class="heart-right">
-                <i title="Add to Calendar" class="${room_color} heart ${outline} icon add-to-call" onclick="addToCall('${dataId}', this)"></i>
-              </span>
-            </h5>
-            <div class="left aligned card-header">
-              ${title}
-            </div>
-            <div class="ui basic tiny label session-label">Level: <strong>${level}</strong></div>
-            <div class="ui basic tiny label session-label">Focus: <strong>${focus}</strong></div>
-            <div class="ui basic tiny label session-label">Type:  <strong>${type}</strong></div>
-
-            <div class="talk-link ${talk_link_style}">
-              <button class="ui ${room_color} button" onclick = "window.open('${talk_link}',  '_blank')" data-toggle="tooltip" title="${talk_link}">
-                <i class="external url icon"></i>${link_text}
-              </button>
-            </div>
-
-            <div class="description">
-              ${description}
-            </div>
-            
-          </div>
-          <div class="extra content">
-            <span class="ui ${room_color} basic  circular label">
-            ${room_sponsor}
-            </span>
-            <span class="ui mini labels session-tags">
-              ${tagsHtml}
-            </span>
-            <span title="Room Capacity: ${capacity}" class="ui circular basic  label no-border">
-              ${capacity}
-              <i class="icon users"></i>
-            </span>
-          </div>
-        </div>
-      `;
+      // TODO: hide 'Room capacity if 'capacity' is blank
+      // THIS CARD IS STANDARD INFO CARD
+      divs += buildSessionInfoCardHtml(sessionObj);
     }
   }
 
@@ -172,7 +50,6 @@ function loadCards(data, roomCount) {
     </button>
     `;
   document.getElementById("demo").innerHTML = divs;
-  // $('.calendar.plus.outline.icon.right.floated')
 
   // scrollToCurrentSession();
   // showHideCurrentSessions();

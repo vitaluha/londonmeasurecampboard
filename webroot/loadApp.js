@@ -61,14 +61,6 @@ function showInfo(data, tabletop) {
   loadLogo(settings);
   loadToastrNotif(settings);
 }
-function buildTags(tags) {
-  var arr = tags.split(',');
-  var html = '';
-  for (x in arr) {
-    html += '<span class="ui mini basic label">' + arr[x] + '</span>';
-  }
-  return html;
-}
 
 function buildRooms(roomCount) {
   var divs = `<div class="ui ${roomCount} labels session-rooms">`;
@@ -86,4 +78,13 @@ function buildRooms(roomCount) {
 
   divs += '</div>';
   document.getElementById("rooms").innerHTML = divs;
+}
+
+function buildTags(tags) {
+  var arr = tags.split(',');
+  var html = '';
+  for (x in arr) {
+    html += '<span class="ui mini basic label">' + arr[x] + '</span>';
+  }
+  return html;
 }

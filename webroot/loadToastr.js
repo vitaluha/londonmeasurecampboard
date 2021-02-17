@@ -1,5 +1,11 @@
-function loadToastrNotif(settings) {
+function loadToastrNotif(notifs) {
   loadToastrOptions();
+  for (var notif in notifs) {
+    var toast = notifs[notif];
+    if (toast.name === 'Notification') {
+      toastr['success'](toast.value);
+    }
+  }
 
   // TODO: read dynamic updates
   // toastr["warning"]("Session 1 is now at 12:20pm", "Session time changed!");
