@@ -168,3 +168,27 @@ function getIsFinished(time) {
   var currentTime = moment().format("h:mma");
   return moment(endTime, "h:mma").isBefore();
 }
+
+function onSessionClick(sessionId) {
+  var clickedSession =
+    sessions.find(e => e['data-id'] === sessionId)
+  //TODO: track session click
+  var customParams = {
+    session_author: clickedSession.speaker,
+    session_author_twitter: clickedSession.twitter,
+    session_title: clickedSession.title,
+    session_time: clickedSession.time,
+    session_level: clickedSession.level,
+    session_focus: clickedSession.focus,
+    session_type: clickedSession.type,
+    room_name: clickedSession.room_sponsor // Track room name. Usually named after the sponsors.
+  }
+  trackEvent(
+    'customEvent',
+    'User Engagement',
+    'Enter Room Button Click',
+    clickedSession.talk_link, // not room name - it's on which "talk" user clicked
+    customParams
+  );
+  window.open(clickedSession.talk_link, '_blank');
+}

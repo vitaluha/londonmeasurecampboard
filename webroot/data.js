@@ -87,7 +87,7 @@ function buildFullWidthCardHtml(sessionObj) {
           <i class="icon users"></i>
         </span>
         <div class="talk-link ${sessionObj.talk_link_style}">
-          <button class="ui ${sessionObj.room_color} button" onclick = "window.open('${sessionObj.talk_link}',  '_blank')" data-toggle="tooltip" title="${sessionObj.talk_link}">
+          <button class="ui ${sessionObj.room_color} button" onclick="onSessionClick(sessionObj)" data-toggle="tooltip" title="${sessionObj.talk_link}">
             <i class="external url icon"></i>${sessionObj.link_text}
           </button>
         </div>
@@ -117,7 +117,7 @@ function buildSessionInfoCardHtml(sessionObj) {
             <div class="ui basic tiny label session-label">Type:  <strong>${sessionObj.type}</strong></div>
 
             <div class="talk-link ${sessionObj.talk_link_style}">
-              <button class="ui ${sessionObj.room_color} button" onclick = "window.open('${sessionObj.talk_link}',  '_blank')" data-toggle="tooltip" title="${sessionObj.talk_link}">
+              <button class="ui ${sessionObj.room_color} button" onclick="onSessionClick('${sessionObj.dataId}')" data-toggle="tooltip" title="${sessionObj.talk_link}">
                 <i class="external url icon"></i>${sessionObj.link_text}
               </button>
             </div>
