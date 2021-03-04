@@ -34,6 +34,7 @@ function showInfo(data, tabletop) {
     // TODO: add error friendly UX here
     return;
   }
+  trackCity(city)
   cards = tabletop.sheets(city).elements;
 
   // TODO: remove this, and read from `session_id` property directly
