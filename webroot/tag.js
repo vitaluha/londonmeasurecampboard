@@ -1,18 +1,20 @@
-function trackEvent(eventName, category, action, label, customParams) {
-  /* console.log('tracking:');
-  console.log({
-    event: eventName,
-    eventCategory: category,
-    eventAction: action,
-    eventLabel: label,
-    customParams
-  }) */
+function trackEvent(
+  eventName, category, action, label, session_author,
+  session_author_twitter, session_title, session_time, session_level,
+  session_focus, session_type, room_name) {
   dataLayer.push({
     event: eventName,
     eventCategory: category,
     eventAction: action,
     eventLabel: label,
-    customParams
+    session_author,
+    session_author_twitter,
+    session_title,
+    session_time,
+    session_level,
+    session_focus,
+    session_type,
+    room_name
   });
 }
 
