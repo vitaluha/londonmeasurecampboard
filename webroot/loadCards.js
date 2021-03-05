@@ -115,6 +115,11 @@ function loadLinks(links) {
           `;
     }
   }
+  div += `
+            <a class="white item" target="_blank" title="Support my development of MeasureCamp Session Board. Buy me a coffee! ☕" href="http://www.buymeacoffee.com/vitaliymatiyash">
+              Support developer. Buy me a coffee! ☕ 
+            </a>
+          `;
   div += `</div></div>`;
   document.getElementById("linksDropdown").innerHTML = div;
 }
@@ -169,12 +174,14 @@ function getIsFinished(time) {
   return moment(endTime, "h:mma").isBefore();
 }
 
+function findSessionById(sessionId) {
+  return sessions.find(e => e['data-id'] === sessionId);
+}
+
 function onSessionClick(sessionId) {
-  var clickedSession =
-    sessions.find(e => e['data-id'] === sessionId);
-  //TODO: track session click
-  var
-    session_author = clickedSession.speaker,
+  var clickedSession = this.findSessionById(sessionId);
+
+  var session_author = clickedSession.speaker,
     session_author_twitter = clickedSession.twitter,
     session_title = clickedSession.title,
     session_time = clickedSession.time,
@@ -198,4 +205,61 @@ function onSessionClick(sessionId) {
     room_name
   );
   window.open(clickedSession.talk_link, '_blank');
+}
+function trackOnFavClicked(sessionId) {
+  var clickedSession = this.findSessionById(sessionId);
+
+  var session_author = clickedSession.speaker,
+    session_author_twitter = clickedSession.twitter,
+    session_title = clickedSession.title,
+    session_time = clickedSession.time,
+    session_level = clickedSession.level,
+    session_focus = clickedSession.focus,
+    session_type = clickedSession.type,
+    room_name = clickedSession.room_sponsor; // Track room name. Usually named after the sponsors.
+
+  trackEvent(
+    'customEvent',
+    'User Engagement',
+    'Session Favorited',
+    clickedSession.title, // not room name - it's on which "talk" user clicked
+    session_author,
+    session_author_twitter,
+    session_title,
+    session_time,
+    session_level,
+    session_focus,
+    session_type,
+    room_name
+  );
+}
+
+function onTwitterClick(sessionId) {
+  var clickedSession = this.findSessionById(sessionId);
+
+  var session_author = clickedSession.speaker,
+    session_author_twitter = clickedSession.twitter,
+    session_title = clickedSession.title,
+    session_time = clickedSession.time,
+    session_level = clickedSession.level,
+    session_focus = clickedSession.focus,
+    session_type = clickedSession.type,
+    room_name = clickedSession.room_sponsor; // Track room name. Usually named after the sponsors.
+
+  trackEvent(
+    'customEvent',
+    'User Engagement',
+    'Twitter Link Clicked',
+    clickedSession.twitter, // not room name - it's on which "talk" user clicked
+    session_author,
+    session_author_twitter,
+    session_title,
+    session_time,
+    session_level,
+    session_focus,
+    session_type,
+    room_name
+  );
+  var url = 'https://www.twitter.com/' + clickedSession.twitter;
+  window.open(url, '_blank');
 }

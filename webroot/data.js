@@ -7,8 +7,7 @@ function getSession(session) {
   sessionObj.title = session.title ? session.title : '&#160;';
   sessionObj.description = session.description ? session.description : '&#160;';
   sessionObj.twitter = session.twitter ?
-    '<a title="' + session.twitter + '" target="_blank" href="https://www.twitter.com/' +
-    session.twitter + '"><i class="twitter icon"></i>' + session.speaker + '</a>' :
+    '<a title="' + session.twitter + '" target="_blank" onclick="onTwitterClick(\'' + sessionObj.dataId + '\')"><i class="twitter icon"></i>' + session.speaker + '</a>' :
     undefined;
   sessionObj.speaker = sessionObj.twitter ?
     sessionObj.twitter :
@@ -87,7 +86,7 @@ function buildFullWidthCardHtml(sessionObj) {
           <i class="icon users"></i>
         </span>
         <div class="talk-link ${sessionObj.talk_link_style}">
-          <button class="ui ${sessionObj.room_color} button" onclick="onSessionClick(sessionObj)" data-toggle="tooltip" title="${sessionObj.talk_link}">
+          <button class="ui ${sessionObj.room_color} button" onclick="onSessionClick('${sessionObj.dataId}')" data-toggle="tooltip" title="${sessionObj.talk_link}">
             <i class="external url icon"></i>${sessionObj.link_text}
           </button>
         </div>
@@ -164,6 +163,9 @@ function addToCall(data, heart) {
     heart.classList.remove("outline");
     localStorage.setItem('card' + data, true);
   }
+
+  trackOnFavClicked(data);
+
   // OLD: Add to calendar
   /*var event = sessionItem;
   var description = buildEventDescription(event);
