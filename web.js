@@ -18,14 +18,16 @@ app.get('/', function (request, response) {
 app.get('/2020', function (request, response) {
   var queryData = url.parse(request.url, true);
   console.log(queryData.query.city);
-  app.set('_city', queryData.query.city)
+  app.set('_city', queryData.query.city);
+  app.set('_year', 2020);
   response.sendfile(__dirname + '/webroot/index.html');
 });
 
 app.get('/2021', function (request, response) {
   var queryData = url.parse(request.url, true);
   console.log(queryData.query.city);
-  app.set('_city', queryData.query.city)
+  app.set('_city', queryData.query.city);
+  app.set('_year', 2021);
   response.sendfile(__dirname + '/webroot/index.html');
 });
 

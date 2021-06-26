@@ -1,7 +1,7 @@
 //  TODO: Insert link to your Google Sheet below
 // var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/19NhwtckaO9KfabuFPX9vlcNEnjOUXVy1OAq9kJgA5Rk/edit?usp=sharing';
 
-var publicSpreadsheetUrl = gOptions.enabled ? gOptions.google_sheet_url : '';
+var publicSpreadsheetUrl = getSheetUrl();
 
 var sessions = {};
 window.addEventListener('DOMContentLoaded', init);
@@ -14,6 +14,19 @@ function init() {
   });
 }
 
+function getSheetUrl() {
+  // TODO: check gOptions.enabled is true to proceed
+  var year = getYear();
+  var yearLookupKey = 'google_sheet_url_' + year
+  return gOptions[yearLookupKey];
+  // gOptions.google_sheet_url
+  /* if (year === '2020') {
+    return gOptions.google_sheet_url
+  } else if (year === '2021') {
+
+  } */
+}
+
 function getCity() {
   const urlParams = new URLSearchParams(window.location.search)
   var city = 'Data';
@@ -21,6 +34,11 @@ function getCity() {
     city = urlParams.get('city');
   }
   return city;
+}
+
+function getYear() {
+  var year = window.location.pathname;
+  return year.replace('/', '');
 }
 
 function showInfo(data, tabletop) {
