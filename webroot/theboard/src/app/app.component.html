@@ -1,0 +1,129 @@
+<div class="main">
+  <h1>MeasureCamp</h1>
+  <!-- <form class="stock-form">
+    <mat-form-field class="stock-form-field">
+      <input
+        matInput
+        #stockInput
+        placeholder="Enter stock symbol"
+        class="input-stock"
+        name="stockName"
+        [(ngModel)]="stockName"
+      >
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="stock-search-btn"
+      (click)=stockChange(stockInput.value)
+    >Search</button>
+  </form> -->
+  <div class="content">
+    <!-- <mat-grid-list
+      cols="4"
+      [style.background]="'skyblue'"
+    > -->
+    <mat-card *ngFor="let event of events; let i = index">
+      <mat-card-header>
+        <mat-card-title>
+          {{event.event}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          {{event.website}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <!-- </mat-grid-list> -->
+
+    <!-- site: {{event.website}}
+    date: {{event.date}} -->
+
+
+  </div>
+
+
+  <mat-card
+    *ngIf="stock?.profile"
+    class="stock-card"
+  >
+    <mat-card-header class="stock-card-header">
+      <mat-card-title class="stock-title">
+        <div class="box-1">
+          <img src="{{stock?.profile.image}}">
+        </div>
+        <div class="box-2">
+          <h4 class="stock-company-name">{{stock?.profile.companyName}}</h4>
+          <h4>({{stock?.symbol}})</h4>
+        </div>
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        <h2>
+          <span
+            *ngIf="stock?.profile.price"
+            class="stock-price"
+          >
+            ${{stock?.profile.price}}
+          </span>
+          <mat-icon class="stock-arrow">
+            {{getPriceColor(stock?.profile.changes) === 'green' ? 'arrow_drop_up' : 'arrow_drop_down'}}
+          </mat-icon>
+          <span class="stock-change {{getPriceColor(stock?.profile.changes)}}">{{stock?.profile.changes}}</span>
+          <span
+            class="stock-change-percent {{getPriceColor(stock?.profile.changes)}}">{{stock?.profile.changesPercentage}}</span>
+        </h2>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <section class="stock-numbers">
+        <div *ngIf="stock?.profile.mktCap">
+          <label class="label">Market Cap</label>
+          <label class="value">${{getFormattedNumber(stock?.profile.mktCap, '0.00a')}}</label>
+        </div>
+        <div *ngIf="stock?.profile.beta">
+          <label class="label">Beta</label>
+          <label class="value">{{stock?.profile.beta}}</label>
+        </div>
+        <div *ngIf="stock?.profile.volAvg">
+          <label class="label">Average Volume</label>
+          <label class="value">{{getFormattedNumber(stock?.profile.volAvg, '0,0')}}</label>
+        </div>
+        <div *ngIf="stock?.profile.range">
+          <label class="label">Range</label>
+          <label class="value">{{stock?.profile.range}}</label>
+        </div>
+      </section>
+      <section class="stock-info">
+        <div *ngIf="stock?.profile.ceo">
+          <label class="label">CEO</label>
+          <label class="value">{{stock?.profile.ceo}}</label>
+        </div>
+        <div *ngIf="stock?.profile.industry">
+          <label class="label">Industry</label>
+          <label class="value">{{stock?.profile.industry}}</label>
+        </div>
+        <div *ngIf="stock?.profile.sector">
+          <label class="label">Sector</label>
+          <label class="value">{{stock?.profile.sector}}</label>
+        </div>
+        <div *ngIf="stock?.profile.description">
+          <label class="label">Description</label>
+          <label class="value description">{{stock?.profile.description}}</label>
+        </div>
+      </section>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <a
+        *ngIf="stock?.profile.website"
+        href="{{stock?.profile.website}}"
+        target="_blank"
+        mat-flat-button
+        color="primary"
+      >{{stock?.profile.website}}</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<router-outlet></router-outlet>

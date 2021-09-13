@@ -5,6 +5,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "method-override": "*",
+    "papaparse": "^5.3.1",
     "toastr": "^2.1.4"
   },
   "engines": {

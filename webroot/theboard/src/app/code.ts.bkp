@@ -1,0 +1,78 @@
+getPigLatin(phrase: string) {
+    if (!phrase || phrase.trim().length === 0) {
+      return "";
+    }
+
+    let characterToMove = stat;
+
+    if (this.startsWithConsonant(phrase)) {
+      characterToMove = 1;
+    }
+    return this.removeCharacterAndAppendSuffix(phrase, characterToMove);
+  }
+
+  getCharactersToMoveCount(phrase: string) {
+    return this.startsWithConsonant(phrase) ? 1 : 0;
+  }
+  startsWithConsonant(phrase: string) {
+    const vowels = ["a", "o", "i", "u", "e", "y"];
+    return vowels.indexOf(phrase[0])  === -1;
+  }
+
+  removeCharacterAndAppendSuffix(phrase: string, index?: number) {
+    const charactersToSwap = phrase.substr(0, index);
+    return phrase.substr(index).concat(charactersToSwap).concat('ay');
+  }
+
+
+  /*******************/
+
+
+    // 'pen' - 'enpay'
+    // 'ice' - 'iceay'
+    // 'chicken' - 'ickenchay'
+    // 'ice pen' - 'ice pen'
+
+    describe('pig latin', () => {
+      describe('single words that start with consonant', () => {
+        it('should return "enpay" for "pen"', () => {
+          const english = 'pen';
+          const pigLatin = 'enpay';
+          expect(app.getPigLatin(english)).toEqual(pigLatin);
+        });
+
+        it('should return "ordway" for "word"', () => {
+          const english = 'word';
+          const pigLatin = 'ordway';
+          expect(app.getPigLatin(english)).toEqual(pigLatin);
+        });
+      });
+
+      describe('single words that start with vowels', () => {
+        it('should return "iceay" for "ice"', () => {
+          const english = 'ice';
+          const pigLatin = 'iceay';
+          expect(app.getPigLatin(english)).toEqual(pigLatin);
+        });
+      });
+
+      describe('invalid case', () => {
+        it('should return "" for empty string', () => {
+          const english = '';
+          const pigLatin = '';
+          expect(app.getPigLatin(english)).toEqual(pigLatin);
+        });
+        it('should return "" for null', () => {
+          const english = null;
+          const pigLatin = '';
+          expect(app.getPigLatin(english)).toEqual(pigLatin);
+        });
+        it('should return "" for whitespace', () => {
+          const english = '    ';
+          const pigLatin = '';
+          expect(app.getPigLatin(english)).toEqual(pigLatin);
+        });
+      });
+    });
+
+

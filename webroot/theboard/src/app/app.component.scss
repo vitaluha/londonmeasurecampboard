@@ -1,0 +1,128 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+    @media (max-width: 800px) {
+      font-size: 1.5rem;
+    }
+  }
+  .stock-form {
+    width: 80%;
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .stock-form-field {
+      width: 10rem;
+    }
+  }
+  h4 {
+    margin: 0.5rem;
+  }
+  mat-card {
+    max-width: 1024px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .mat-card-header-text {
+    margin: 0;
+  }
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    .stock-company-name {
+      flex: 1;
+    }
+    .box-1 {
+      width: 180px;
+      @media (max-width: 800px) {
+        width: inherit;
+      }
+      img {
+        max-height: 64px;
+      }
+    }
+    .box-2 {
+      display: flex;
+      flex: 1;
+      padding-left: 4rem;
+      @media (max-width: 800px) {
+        padding-left: 0;
+      }
+    }
+    .stock-arrow {
+      vertical-align: middle;
+    }
+  }
+  mat-card-subtitle.mat-card-subtitle {
+    opacity: 1;
+    margin: 0;
+    .stock-price {
+      font-size: 1.5rem;
+      color: #222;
+      padding-right: 2rem;
+      @media (max-width: 800px) {
+        display: block;
+      }
+    }
+    .stock-price, .stock-change, .stock-change-percent{
+      &.green {
+        color: green;
+      }
+      &.red {
+        color: red;
+      }
+      &.grey {
+        color: grey;
+      }
+    }
+    .stock-change {
+
+    }
+    .stock-change-percent {
+      padding-left: 1rem;
+    }
+  }
+  mat-card-content {
+    margin: 0 1rem 1rem;
+    display: flex;
+    @media (max-width: 800px) {
+      flex-direction: column;
+      margin: 0;
+    }
+    .stock-numbers {
+      flex: 1;
+    }
+    .stock-info {
+      flex: 1;
+    }
+    section div {
+      display: flex;
+      line-height: 2rem;
+    }
+    label.label {
+      width: 136px;
+      border-bottom: 1px solid #ecedee;
+    }
+    label.value {
+      font-weight: bold;
+      font-size: 1rem;
+      border-bottom: 1px solid #ecedee;
+      &.description {
+        line-height: 1.2rem;
+        padding-left: 4rem;
+      }
+    }
+  }
+  .stock-search-btn {
+    margin-left: 2rem;
+  }
+  mat-card-actions {
+    margin: 0 1rem;
+  }
+}
