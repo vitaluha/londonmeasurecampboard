@@ -1,26 +1,39 @@
 //  TODO: Insert link to your Google Sheet below
 // var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/19NhwtckaO9KfabuFPX9vlcNEnjOUXVy1OAq9kJgA5Rk/edit?usp=sharing';
 
-var publicSpreadsheetUrl = getSheetUrl();
-var europeSettingsUrl = gOptions['europe_settings_url']
 var sheetReferenceUrl = getSheetReferenceUrl();
+
 var settings;
 var sessions = {};
+var sheetsUrl = {};
+var eventSettingsUrl;
+var eventEventUrl;
+var city = getCity();
 
-if (publicSpreadsheetUrl) {
-  window.addEventListener('DOMContentLoaded', init);
-} else {
-  window.addEventListener('DOMContentLoaded', init2);
+window.addEventListener('DOMContentLoaded', initReference);
+
+function loadSettingsAndEvents() {
+
+  eventSettingsUrl = sheetsUrl[city]['Session Settings']
+  if (eventSettingsUrl) {
+    initEventSettings();
+  }
+
+  eventEventUrl = sheetsUrl[city]['Sessions Sheet'];
+  if (eventEventUrl) {
+    init();
+  }
 }
-window.addEventListener('DOMContentLoaded', initEuropeSettings)
-function initEuropeSettings() {
-  Papa.parse(europeSettingsUrl, {
+
+function initEventSettings() {
+  Papa.parse(eventSettingsUrl, {
     download: true,
     header: true,
-    complete: loadEuropeSettings
+    complete: loadEventSettings
   })
 }
-function loadEuropeSettings(data) {
+
+function loadEventSettings(data) {
   settings = data.data;
   setSettings();
 }
@@ -33,25 +46,11 @@ function setSettings() {
 }
 
 function init() {
-  Papa.parse(publicSpreadsheetUrl, {
+  Papa.parse(eventEventUrl, {
     download: true,
     header: true,
     complete: showInfo
   })
-}
-
-function init2() {
-  // Tabletop.init({
-  //   key: sheetReferenceUrl,
-  //   callback: sheetReferenceLoaded,
-  //   simpleSheet: true,
-  //   parameterize: 'http://example.herokuapp.com/?url='
-  // });
-}
-
-
-function getSheetReferenceUrl() {
-  return gOptions['sheet_reference_url'];
 }
 
 function getSheetUrl() {
@@ -67,7 +66,7 @@ function getCity() {
   if (urlParams && urlParams.get('city')) {
     city = urlParams.get('city');
   }
-  return city;
+  return city.toLowerCase();
 }
 
 function getYear() {
@@ -77,10 +76,8 @@ function getYear() {
 
 function showInfo(data, tabletop) {
   if (data === undefined) {
-    // loadMain();
     return;
   }
-  var city = getCity();
   var cards;
   /* if (!tabletop.sheets(city)) {
     alert('No such city: ' + city);
