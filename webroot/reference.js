@@ -14,7 +14,7 @@ function loadReference(data) {
   console.log('loadReference')
   if (data && data.data) {
     data.data.forEach(item => {
-      sheetsUrl[item['Event']] = item;
+      sheetsUrl[item['Event'].toLowerCase()] = item;
     })
 
   }
