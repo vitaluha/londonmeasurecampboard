@@ -1,3 +1,6 @@
+*{
+font-family: 'Poppins', sans-serif;
+}
 html {
   overflow-x: hidden;
 }
@@ -9,8 +12,11 @@ html {
 } */
 .ui.card,
 .ui.cards > .card {
-  box-shadow: 0 1px 3px 0 #ecedee, 0 0 0 1px #ecedee;
+  /* box-shadow: 0 1px 3px 0 #ecedee, 0 0 0 1px #ecedee; */
   border: 1px solid transparent;
+  border-radius: 30px;
+  box-shadow: 0px 2px 25px 0px rgba(0, 0, 0, 0.15);
+  height: fit-content;
 }
 .ui.card > .content > .header,
 .ui.cards > .card > .content > .header {
@@ -48,16 +54,17 @@ html {
 
 /* Main session list */
 .session-list {
-  padding: 20px 10px 135px;
+  padding: 20px 1rem 135px;
 }
 .built-by {
   margin: 10px calc(50% - 110px) 0px !important;
   width: 220px;
 }
-.card-header {
-  font-size: 1rem;
+.card .content .card-header {
+  font-size: 1.3rem;
+  text-align: center !important;
+  line-height: 2rem;
   font-weight: bold;
-  background: #ecedee;
   padding: 5px;
   margin-bottom: 2px;
   min-height: 48px;
@@ -122,11 +129,18 @@ html {
   background: #ecedee;
   box-shadow: 0px 3px 10px 4px rgba(0, 0, 0, 0.32);
 }
-.speaker-twitter {
-  margin-left: 6px !important;
+.card .content .speaker-twitter {
+  margin-left: 0px !important;
   border: none !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.card .content .session-time-header {
+  text-align: right !important;
+  line-height: 2rem;
+  height: 2rem;
 }
 .speaker-twitter a {
   opacity: 1 !important;
@@ -173,10 +187,30 @@ html {
   background: yellow;
 }
 
+.description, .description2 {
+  white-space: pre-line;
+}
+.description2 {
+}
+
+.animate{
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards;
+
+}
+
 .full-width-card {
   width: 100% !important;
-  box-shadow: 0px 0px 6px 2px #a43e41 !important;
+  /* margin: 1rem auto !important; */
+  box-shadow: 0px 2px 25px 0px rgba(0, 0, 0, 0.15) !important;
+  background-color: #a43e41 !important;
   /* border: 3px solid #a43e41 !important; */
+}
+.full-width-card * {
+  color: white !important;
+}
+.full-width-card .label, .full-width-card button {
+  background: none !important;
 }
 .full-width-card .header {
   text-align: center;
@@ -184,7 +218,7 @@ html {
 }
 .full-width-card .card-header {
   font-size: 1.2rem;
-  background: #a43e41;
+  background: none;
   color: white;
   text-align: center !important;
   padding: 10px;
@@ -204,18 +238,22 @@ html {
   /* display: inline; */
   margin: 0;
 }
-.description {
-  white-space: pre-line;
+.full-width-card {
+
 }
+
 /*#a43e41*/
 .card.finished {
   opacity: 0.6;
 }
 .session-label {
-  display: block !important;
+  font-weight: 200;
   width: fit-content;
 }
-
+button.show-more{ 
+  line-height: 1rem !important;
+  white-space: normal;
+}
 #measureCampLogo {
   margin: 0 auto;
 }
@@ -290,4 +328,30 @@ html {
 
 .center-image img {
   opacity: 0.8;
+}
+.slide-in {
+    animation: slide-in 0.5s forwards;
+    -webkit-animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+    animation: slide-out 0.5s forwards;
+    -webkit-animation: slide-out 0.5s forwards;
+}
+@keyframes slide-in {
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateX(0%); }
+}
+    
+@keyframes slide-out {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
 }

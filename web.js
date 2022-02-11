@@ -30,6 +30,22 @@ app.get('/2021', function (request, response) {
   response.sendFile(__dirname + '/webroot/index.html');
 });
 
+app.get('/2022', function (request, response) {
+  app.use(express.static(__dirname + '/webroot'));
+  var queryData = url.parse(request.url, true);
+  app.set('_city', queryData.query.city);
+  app.set('_year', 2022);
+  response.sendFile(__dirname + '/webroot/index.html');
+});
+
+app.get('/2023', function (request, response) {
+  app.use(express.static(__dirname + '/webroot'));
+  var queryData = url.parse(request.url, true);
+  app.set('_city', queryData.query.city);
+  app.set('_year', 2023);
+  response.sendFile(__dirname + '/webroot/index.html');
+});
+
 app.get('/', function (request, response) {
   app.set('_city', 'Home');
   app.use(express.static(__dirname + '/webroot/board'))

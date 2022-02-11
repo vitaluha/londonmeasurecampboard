@@ -10,8 +10,11 @@ function getRoomCount(data) {
   var rooms = new Set(uniqueRooms);
   rooms.delete(undefined);
   rooms.delete(null);
-  // debugger;
+
   var roomCount = rooms.size;
+  console.log(roomCount)
+  //TODO: if 2 or 3 sessions per row needed
+  // var roomCount = rooms.size % 4 + 1 < 2 ? 2 : 3;
   return roomCount;
 }
 

@@ -106,13 +106,6 @@ function showInfo(data, tabletop) {
   // buildSessionTimes(sessions);
   buildSessionFavs();
   search_sessions();
-
-  // TODO:hee
-  // var settings =  tabletop.sheets(city + ' Settings').elements;
-  // loadLinks(settings);
-  // loadSponsors(settings);
-  // loadLogo(settings);
-  // loadToastrNotif(settings);
 }
 
 function buildRooms(roomCount) {

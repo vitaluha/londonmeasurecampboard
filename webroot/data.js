@@ -1,3 +1,31 @@
+function getShortDescription(desc, dataId) {
+  var descDiv = '';
+  var result = escape(desc);
+  if (desc && desc.length > 300) {
+    result = desc.substr(0, 300);
+    result += '...';
+  }
+  descDiv = result;
+  descDiv +=
+    `<div style="display: flex; justify-content: center;     height: 3rem;    align-items: center;">
+      <button class="ui grey button show-more" onclick="openFullDescription('${dataId}', this)">
+        Show More...
+      </button>
+    </div>
+    `;
+  return descDiv;
+}
+function openFullDescription(dataId, val) {
+  val.parentElement.parentElement.setAttribute('style', "display:none");
+  val.parentElement.parentElement.nextElementSibling.setAttribute('style', "display:block");
+  val.parentElement.parentElement.nextElementSibling.classList.add('animate')
+  /* console.log(val)
+  var elem = document.querySelector('[data-id=' + dataId + '] .description2');
+  elem.setAttribute('style', "display:block");
+
+  var elem = document.querySelector('[data-id=' + dataId + '] .description');
+  elem.setAttribute('style', "display:none"); */
+}
 function getSession(session) {
   var sessionObj = {};
   sessionObj.dataId = session['data-id'];
@@ -6,6 +34,9 @@ function getSession(session) {
   sessionObj.time = session.time ? session.time.replace(/am/ig, '').replace(/pm/ig, '').trim() : '&#160;';
   sessionObj.title = session.title ? session.title : '&#160;';
   sessionObj.description = session.description ? session.description : '&#160;';
+  sessionObj.short_description = session.description.length > 300 ?
+    getShortDescription(session.description, sessionObj.dataId) :
+    sessionObj.description;
   sessionObj.twitter = session.twitter ?
     '<a title="' + session.twitter + '" target="_blank" onclick="onTwitterClick(\'' + sessionObj.dataId + '\')"><i class="twitter icon"></i>' + session.speaker + '</a>' :
     undefined;
@@ -101,7 +132,7 @@ function buildSessionInfoCardHtml(sessionObj) {
           <div class="content">
             <h5 class="ui ${sessionObj.room_color} header">
               <div class="session-time-header">${sessionObj.time}</div>
-              <div class="ui basic label speaker-twitter">
+              <div class="ui basic label speaker-twitter ${sessionObj.room_color}">
                 ${sessionObj.speaker}
               </div>
               <span class="heart-right">
@@ -111,18 +142,21 @@ function buildSessionInfoCardHtml(sessionObj) {
             <div class="left aligned card-header">
               ${sessionObj.title}
             </div>
-            <div class="ui basic tiny label session-label">Level: <strong>${sessionObj.level}</strong></div>
-            <div class="ui basic tiny label session-label">Focus: <strong>${sessionObj.focus}</strong></div>
-            <div class="ui basic tiny label session-label">Type:  <strong>${sessionObj.type}</strong></div>
+            <span class="ui basic tiny label session-label">Level: <strong>${sessionObj.level}</strong></span>
+            <span class="ui basic tiny label session-label">Focus: <strong>${sessionObj.focus}</strong></span>
+            <span class="ui basic tiny label session-label">Type:  <strong>${sessionObj.type}</strong></span>
+
+            <div class="description">
+              ${sessionObj.short_description}
+            </div>
+            <div class="description2" style="display:none;">
+              ${sessionObj.description}
+            </div>
 
             <div class="talk-link ${sessionObj.talk_link_style}">
               <button class="ui ${sessionObj.room_color} button" onclick="onSessionClick('${sessionObj.dataId}')" data-toggle="tooltip" title="${sessionObj.talk_link}">
                 <i class="external url icon"></i>${sessionObj.link_text}
               </button>
-            </div>
-
-            <div class="description">
-              ${sessionObj.description}
             </div>
             
           </div>
