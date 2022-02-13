@@ -19,12 +19,6 @@ function openFullDescription(dataId, val) {
   val.parentElement.parentElement.setAttribute('style', "display:none");
   val.parentElement.parentElement.nextElementSibling.setAttribute('style', "display:block");
   val.parentElement.parentElement.nextElementSibling.classList.add('animate')
-  /* console.log(val)
-  var elem = document.querySelector('[data-id=' + dataId + '] .description2');
-  elem.setAttribute('style', "display:block");
-
-  var elem = document.querySelector('[data-id=' + dataId + '] .description');
-  elem.setAttribute('style', "display:none"); */
 }
 function getSession(session) {
   var sessionObj = {};

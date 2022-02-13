@@ -12,7 +12,6 @@ function getRoomCount(data) {
   rooms.delete(null);
 
   var roomCount = rooms.size;
-  console.log(roomCount)
   //TODO: if 2 or 3 sessions per row needed
   // var roomCount = rooms.size % 4 + 1 < 2 ? 2 : 3;
   return roomCount;

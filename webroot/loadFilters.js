@@ -21,7 +21,6 @@ function filterBySessionFav(fav) {
 
 // TODO: when toggling filter between 'ALL' and 'My Sessions' - clear 'time' value
 function filterBySessionTime(time) {
-  console.log(time)
   $('#search_sessions').val('');
   data = sessions.filter(function(d) {
     if (time == 'all') {
@@ -34,7 +33,6 @@ function filterBySessionTime(time) {
   x = $('.session-time').filter(function(d, i ){
     return i.innerHTML == time;
   })
-  console.log(x)
   x.removeClass('grey')
   // x.removeClass('basic')
   x.addClass('red')

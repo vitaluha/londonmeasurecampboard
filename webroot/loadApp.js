@@ -74,19 +74,14 @@ function getYear() {
   return year.replace('/', '');
 }
 
-function showInfo(data, tabletop) {
+function showInfo(data) {
   if (data === undefined) {
     return;
   }
   var cards;
-  /* if (!tabletop.sheets(city)) {
-    alert('No such city: ' + city);
-    // TODO: add error friendly UX here
-    return;
-  } */
-  trackCity(city)
-  // cards = tabletop.sheets(city).elements;
-  cards = data.data
+  trackCity(city);
+  
+  cards = data.data;
 
   // TODO: remove this, and read from `session_id` property directly
   cards.forEach(function (d, i) {

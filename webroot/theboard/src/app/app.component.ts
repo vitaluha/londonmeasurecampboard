@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
 
   loadSheet() {
     this.api.getSheet().subscribe(data => {
-      console.log(data);
       this.events = data;
     });
   }

@@ -27,7 +27,6 @@ function trackCity(city) {
     ("00" + date.getHours()).slice(-2) + ":" +
     ("00" + date.getMinutes()).slice(-2) + ":" +
     ("00" + date.getSeconds()).slice(-2);
-  // console.log(dateStr);
   dataLayer.push({
     event_city: city,
     event_date: dateStr
