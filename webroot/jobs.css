@@ -22,3 +22,8 @@
   line-height: 30px;
   font-weight: bold;
 }
+
+.jobs-button {
+  background-color: #a43e41 !important;
+  color: white !important;
+}

@@ -23,6 +23,16 @@
     type="text/css"
     href="jobs.css"
   >
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="sessions.css"
+  >
+  <link
+    rel="icon"
+    type="image/png"
+    href="favicon.png"
+  >
   <script src="libs/jquery-3.1.1.min.js"></script>
   <script src="libs/semantic/semantic.min.js"></script>
   <script
@@ -88,14 +98,14 @@
       <div class="column">
         <div class="ui fluid card">
           <div class="content">
-            <div class="jobs-header">${data[x].TITLE}</div>
+            <div class="left aligned card-header">${data[x].TITLE}</div>
             <div class="meta">
-              <span>${data[x].COMPANY}</span>
+              <span class="ui blue basic label">${data[x].COMPANY}</span>
             </div>
             <div class="description">
-              Jobs description goes here
+              ${data[x].DESCRIPTION}
             </div>
-            <button class="ui green basic button" onclick="goToJob('${data[x].URL}')">
+            <button class="ui jobs-button button" onclick="goToJob('${data[x].URL}')">
               Link
             </button>
           </div>
